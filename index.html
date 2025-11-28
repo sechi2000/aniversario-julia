@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Aniversario, Julia</title>
+    <!-- Carga de Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* Estilo personalizado para el fondo y la tipografía */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fce4ec;
+            /* Rosa muy claro, romántico */
+            background-image: linear-gradient(to top, #fce4ec 0%, #ffffff 100%);
+            min-height: 100vh;
+        }
+
+        /* Estilo para los botones con efecto hover y sombra */
+        .btn-card {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(236, 72, 153, 0.4), 0 2px 4px -1px rgba(236, 72, 153, 0.2);
+        }
+
+        .btn-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(236, 72, 153, 0.6), 0 4px 6px -2px rgba(236, 72, 153, 0.4);
+            background-color: #f9a8d4;
+        }
+    </style>
+</head>
+
+<body class="p-4 flex items-center justify-center">
+
+    <!-- Contenedor Principal de la Tarjeta -->
+    <main
+        class="w-full max-w-4xl bg-white p-6 md:p-10 rounded-3xl shadow-2xl border-4 border-pink-300 transform transition-all duration-500 scale-100 hover:scale-[1.01] my-8">
+
+        <!-- Encabezado y Foto -->
+        <header class="text-center mb-10">
+            <h1 class="text-5xl md:text-6xl font-extrabold text-pink-600 mb-2 tracking-tight">
+                Feliz Aniversario, Julia
+            </h1>
+            <p class="text-lg text-gray-500 font-medium">De tu Alejandro.</p>
+        </header>
+
+        <!-- Sección de la Foto -->
+        <div class="flex justify-center mb-12">
+            <!-- Placeholder para la foto de la pareja -->
+            <img src="https://placehold.co/300x300/f8bbd0/880e4f?text=Nuestra+Foto"
+                alt="Foto de la pareja celebrando el aniversario."
+                class="w-64 h-64 md:w-80 md:h-80 object-cover rounded-full shadow-xl ring-8 ring-pink-50 ring-offset-2 border-4 border-pink-300"
+                onerror="this.onerror=null; this.src='https://placehold.co/300x300/f8bbd0/880e4f?text=Nuestra+Foto';">
+        </div>
+
+        <!-- Título de las Cartas -->
+        <h2 class="text-center text-3xl font-bold text-pink-500 mb-6 border-b-2 border-pink-100 pb-3">
+            Destapa la Frase Secreta
+        </h2>
+
+        <!-- Contenedor de Botones (Grid Responsivo) -->
+        <div id="buttons-container" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+            <!-- Los botones se generarán con JavaScript -->
+        </div>
+
+        <footer class="text-center mt-10 pt-4 border-t border-pink-100">
+            <p class="text-gray-400 text-sm">🎶 Pista: La inicial de cada carta tiene un mensaje oculto.</p>
+        </footer>
+
+    </main>
+
+    <script>
+        // Array de URLs de Spotify proporcionadas por el usuario (12 URLs)
+        const playlistUrls = [
+            "https://open.spotify.com/playlist/253bg6Vjm5AkEXMWubnamy?si=KFLy4byXRw6lFGoiwbLnzA&pi=6lSgT-6XQ-mPd",
+            "https://open.spotify.com/playlist/7q39MPb5d86mCarTl0v1JT?si=hrcevY2STZmekWupBzTbMw&pi=h00MZhbBRT6fD",
+            "https://open.spotify.com/playlist/6ioCKycYWMYcM0rlGhbGGz?si=oGm56a6qR2qSykpnFhvC-Q&pi=2FaR_F0hQ268Y",
+            "https://open.spotify.com/playlist/48tjheY0BwzGx4P2etqhrc?si=lwrbadnHQ3ymepVjfRvsQQ&pi=amCO6WFkRNen1",
+            "https://open.spotify.com/playlist/1f3ljgwPxXKfDmZaWu1wbS?si=fNAZPPJlTFm20mosJzar4g&pi=6it8npcoRJiXG",
+            "https://open.spotify.com/playlist/3QLDuz52KSg7V2AZqE5Ptl?si=344E8EDzSCu-KBlQBeYl9g&pi=PFsAFYIZSbOnE",
+            "https://open.spotify.com/playlist/2lTBldUjh21JjrOjVefnqn?si=tLipNfD3TTix6gI6SXFwpw",
+            "https://open.spotify.com/playlist/1niWwDrNG85sjJfvNu8mMW?si=rDMceevPSoqOYMybQebBhQ",
+            "https://open.spotify.com/playlist/3vA4UxI4MKjECp4f9sWi3m?si=9kfNsImxSr2TNaJEcSglOQ",
+            "https://open.spotify.com/playlist/3F081GMapCllge4n7JtkVe?si=ZBMNjgwBTN--huDCHicJmg",
+            "https://open.spotify.com/playlist/6gjIMHhR2rkwVZ3eYwSRO4?si=6U30WoqJQa-CcgQK0MExhg",
+            "https://open.spotify.com/playlist/6gjIMHhR2rkwVZ3eYwSRO4?si=6U30WoqJQa-CcgQK0MExhg"
+        ];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('buttons-container');
+
+            // Generar 12 botones dinámicamente
+            playlistUrls.slice(0, 12).forEach((url, index) => {
+                const buttonNumber = index + 1;
+
+                // Crea el elemento <a> (botón/enlace)
+                const anchor = document.createElement('a');
+                anchor.href = url;
+                anchor.target = "_blank"; // Abrir en una nueva pestaña
+                anchor.className = 'btn-card flex items-center justify-center p-3 text-lg font-bold text-white bg-pink-500 rounded-xl hover:bg-pink-400 focus:outline-none focus:ring-4 focus:ring-pink-300 transition duration-300 ease-in-out uppercase tracking-wider';
+                anchor.textContent = `Carta ${buttonNumber}`;
+
+                // Agrega el botón al contenedor
+                container.appendChild(anchor);
+            });
+        });
+    </script>
+</body>
+
+</html>
